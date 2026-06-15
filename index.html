@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Arisca — Ton Sanctuaire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 2s ease-out forwards',
+                        'float': 'float 5s ease-in-out infinite',
+                        'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-12px)' } },
+                        pulseSoft: { '0%, 100%': { opacity: '0.2', transform: 'scale(1)' }, '50%': { opacity: '0.4', transform: 'scale(1.05)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+        .snap-container { scroll-snap-type: y mandatory; }
+        .snap-section { scroll-snap-align: start; }
+        /* Masquage de la scrollbar pour l'immersion */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-stone-950 text-stone-100 font-sans overflow-y-scroll snap-container h-screen w-screen selection:bg-amber-500/30">
+
+    <div class="fixed right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4 pointer-events-auto">
+        <div class="w-2 h-2 rounded-full bg-amber-400 opacity-80 ring-4 ring-amber-400/20 transition-all"></div>
+        <div class="w-2 h-2 rounded-full bg-stone-600 transition-all"></div>
+        <div class="w-2 h-2 rounded-full bg-stone-600 transition-all"></div>
+        <div class="w-2 h-2 rounded-full bg-stone-600 transition-all"></div>
+    </div>
+
+    <section class="snap-section w-full h-screen bg-gradient-to-b from-stone-900 via-stone-950 to-neutral-900 flex flex-col justify-center items-center px-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(217,119,6,0.05)_0%,transparent_70%)] animate-pulse-soft"></div>
+        
+        <div class="max-w-2xl text-center space-y-6 z-10 animate-fade-in">
+            <span class="text-xs uppercase tracking-[0.3em] text-amber-500 font-semibold">15 Juin 2026</span>
+            <h1 class="text-4xl md:text-6xl font-serif font-light text-white leading-tight">
+                Le voyage d'<span class="italic text-amber-400">Arisca</span>
+            </h1>
+            <p class="text-stone-400 font-serif italic text-base md:text-lg max-w-md mx-auto leading-relaxed">
+                « Pose-toi ici. Laisse le tumulte du monde extérieur sur le pas de la porte. Ce moment t’appartient entièrement. »
+            </p>
+            <div class="pt-8 animate-float">
+                <p class="text-[10px] uppercase tracking-[0.2em] text-stone-500">Fais défiler doucement</p>
+                <svg class="w-4 h-4 text-stone-500 mx-auto mt-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </div>
+        </div>
+    </section>
+
+    <section class="snap-section w-full h-screen bg-neutral-950 flex flex-col justify-center items-center px-6 relative">
+        <div class="max-w-3xl w-full grid md:grid-cols-12 gap-8 items-center">
+            <div class="md:col-span-7 space-y-6 text-left">
+                <span class="text-xs uppercase tracking-[0.2em] text-emerald-400 font-semibold">Ici, tu es libre</span>
+                <h2 class="text-3xl md:text-4xl font-serif text-stone-100 leading-tight">
+                    Nul besoin de <br><span class="italic text-emerald-400">justifier ton existence</span>.
+                </h2>
+                <div class="space-y-4 text-stone-400 text-sm md:text-base leading-relaxed">
+                    <p>
+                        Parce que personne ne devrait jamais avoir à expliquer sa façon d'être[cite: 14], ce jardin virtuel a été bâti pour t'offrir une trêve. Loin des regards insistants [cite: 17], loin des attentes et des questions en boucle...
+                    </p>
+                    <p class="border-l-2 border-stone-700 pl-4 italic text-stone-500">
+                        Ici, ta simple présence est une évidence, un cadeau magnifique qui n'attend aucune explication[cite: 22]. Tu as juste à être toi.
+                    </p>
+                </div>
+            </div>
+            <div class="md:col-span-5 flex justify-center">
+                <div class="relative w-48 h-48 flex items-center justify-center">
+                    <div class="absolute inset-0 rounded-full border border-stone-800 animate-spin" style="animation-duration: 20s;"></div>
+                    <div class="absolute w-36 h-36 rounded-full border border-emerald-500/20 animate-ping" style="animation-duration: 4s;"></div>
+                    <svg class="w-16 h-16 text-emerald-400/80 drop-shadow-[0_0_15px_rgba(52,211,153,0.3)]" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12,5.5A3.5,3.5 0 0,1 15.5,9A3.5,3.5 0 0,1 12,12.5A3.5,3.5 0 0,1 8.5,9A3.5,3.5 0 0,1 12,5.5M5,21.5A7,7 0 0,1 12,14.5A7,7 0 0,1 19,21.5H5Z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="snap-section w-full h-screen bg-gradient-to-b from-neutral-950 to-stone-900 flex flex-col justify-center items-center px-6 relative">
+        <div class="max-w-2xl text-center space-y-8">
+            <span class="text-xs uppercase tracking-[0.2em] text-amber-400 font-semibold">Une affection sans filtre</span>
+            <h2 class="text-3xl md:text-5xl font-serif text-stone-100">L'amour inconditionnel des félins</h2>
+            <p class="text-stone-400 text-sm md:text-base leading-relaxed max-w-lg mx-auto">
+                Parce qu'un chat ne demande jamais de justification[cite: 14]. Il s'approche, ressent ton âme, s'installe contre toi et partage sa force tranquille à travers un doux murmure. 
+            </p>
+
+            <div class="bg-stone-900/60 p-6 rounded-2xl border border-stone-800 max-w-md mx-auto space-y-4">
+                <p class="text-xs text-stone-400 font-serif italic">Clique sur le chat pour activer un instant suspendu :</p>
+                <button id="cat-btn" class="p-4 rounded-full bg-stone-800 hover:bg-amber-500/10 border border-stone-700 hover:border-amber-400/50 transition-all group focus:outline-none">
+                    <svg id="cat-icon" class="w-12 h-12 text-stone-400 group-hover:text-amber-400 transition-colors" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C11.5 2 10.2 3.5 10 4C7.5 4.5 6 6.5 6 9C6 13 8 15 8 19C4 19 2 21 2 22H22C22 21 20 19 16 19C16 15 18 13 18 9C18 6.5 16.5 4.5 14 4C13.8 3.5 12.5 2 12 2Z"/>
+                    </svg>
+                </button>
+                <div id="purr-box" class="h-6 text-xs text-amber-400/0 font-mono tracking-widest transition-all duration-500">
+                    * purr... purr... ronron... *
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="snap-section w-full h-screen bg-stone-950 flex flex-col justify-center items-center px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        
+        <div class="max-w-xl text-center space-y-8 z-10 animate-float">
+            <h2 class="text-4xl md:text-6xl font-serif font-light text-white">
+                Joyeux Anniversaire, <br><span class="italic text-amber-300">Arisca</span>
+            </h2>
+            <div class="w-12 h-[1px] bg-amber-400/50 mx-auto"></div>
+            <p class="text-stone-300 font-serif text-base md:text-lg leading-relaxed">
+                Que cette année t'apporte la sérénité des grands espaces calmes , la douceur des ronronnements infinis  et la certitude absolue que tu es merveilleuse exactement telle que tu es.
+            </p>
+            <p class="text-xs uppercase tracking-[0.3em] text-stone-500 font-light">
+                — Créé avec toute mon amitié —
+            </p>
+        </div>
+    </section>
+
+    <script>
+        // Gestion interactive du bouton chat (Ronronthérapie)
+        const catBtn = document.getElementById('cat-btn');
+        const catIcon = document.getElementById('cat-icon');
+        const purrBox = document.getElementById('purr-box');
+        let isPurring = false;
+
+        catBtn.addEventListener('click', () => {
+            isPurring = !isPurring;
+            if (isPurring) {
+                catIcon.classList.add('animate-bounce', 'text-amber-400');
+                purrBox.classList.remove('text-amber-400/0');
+                purrBox.classList.add('text-amber-400/100', 'animate-pulse');
+            } else {
+                catIcon.classList.remove('animate-bounce', 'text-amber-400');
+                purrBox.classList.remove('text-amber-400/100', 'animate-pulse');
+                purrBox.classList.add('text-amber-400/0');
+            }
+        });
+
+        // Mise à jour visuelle des puces de navigation lors du scroll
+        const sections = document.querySelectorAll('.snap-section');
+        const dots = document.querySelectorAll('.fixed .rounded-full');
+        
+        window.addEventListener('scroll', () => {
+            let current = 0;
+            sections.forEach((section, index) => {
+                const top = section.getBoundingClientRect().top;
+                if (top <= window.innerHeight / 2) {
+                    current = index;
+                }
+            });
+            
+            dots.forEach((dot, index) => {
+                if (index === current) {
+                    dot.className = "w-2 h-2 rounded-full bg-amber-400 opacity-80 ring-4 ring-amber-400/20 transition-all";
+                } else {
+                    dot.className = "w-2 h-2 rounded-full bg-stone-600 transition-all";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

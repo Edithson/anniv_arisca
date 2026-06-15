@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joyeux Anniversaire, Arisca 🌸</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream:   #FBF5EC;
+      --sand:    #F2E4CC;
+      --peach:   #F4A87C;
+      --rose:    #E8705A;
+      --sage:    #8BAF85;
+      --bark:    #7A5C44;
+      --ink:     #3D2B1F;
+      --muted:   #9A7B68;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    .serif { font-family: 'Cormorant Garamond', serif; }
+
+    /* ── BACKGROUND PATTERN ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(244,168,124,0.13) 0%, transparent 45%),
+        radial-gradient(circle at 85% 70%, rgba(139,175,133,0.12) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(232,112,90,0.06) 0%, transparent 60%);
+    }
+
+    /* ── CANVAS PÉTALES ── */
+    #petals-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      position: relative;
+      z-index: 1;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+    }
+
+    /* ── HERO ── */
+    #hero { text-align: center; gap: 2rem; }
+
+    .sun-circle {
+      width: clamp(100px, 22vw, 160px);
+      height: clamp(100px, 22vw, 160px);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #FAD7A0, var(--peach));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      margin: 0 auto;
+      animation: sunPulse 5s ease-in-out infinite;
+      box-shadow: 0 0 0 14px rgba(244,168,124,0.12), 0 0 0 28px rgba(244,168,124,0.06);
+    }
+
+    @keyframes sunPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 14px rgba(244,168,124,0.12), 0 0 0 28px rgba(244,168,124,0.06); }
+      50% { transform: scale(1.04); box-shadow: 0 0 0 18px rgba(244,168,124,0.16), 0 0 0 36px rgba(244,168,124,0.08); }
+    }
+
+    #hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 10vw, 6rem);
+      line-height: 1.0;
+      color: var(--rose);
+      font-weight: 600;
+    }
+
+    #hero h1 em {
+      font-style: italic;
+      color: var(--bark);
+    }
+
+    .tagline {
+      font-size: clamp(0.8rem, 2vw, 0.95rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0.4;
+    }
+
+    .scroll-cue span { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+    .scroll-cue .line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, transparent, var(--peach));
+      animation: lineDrop 2.2s ease-in-out infinite;
+    }
+
+    @keyframes lineDrop {
+      0%, 100% { transform: scaleY(0.5); opacity: 0.3; }
+      60% { transform: scaleY(1); opacity: 1; }
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 100%;
+      max-width: 480px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sand);
+    }
+    .divider-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--peach);
+      flex-shrink: 0;
+    }
+
+    /* ── EYEBROW ── */
+    .eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ── CAT SECTION ── */
+    #cats { gap: 2.5rem; text-align: center; }
+
+    #cats h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 6vw, 3.2rem);
+      line-height: 1.25;
+      color: var(--bark);
+      font-weight: 600;
+    }
+
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.2rem;
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .cat-card {
+      background: #fff;
+      border: 1.5px solid var(--sand);
+      border-radius: 1.4rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--peach);
+    }
+
+    .cat-icon {
+      font-size: 2.6rem;
+      margin-bottom: 0.9rem;
+      display: block;
+    }
+
+    .cat-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--bark);
+      margin-bottom: 0.5rem;
+    }
+
+    .cat-card p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ── FORCE SECTION ── */
+    #strength {
+      gap: 2rem;
+      text-align: center;
+      background: linear-gradient(to bottom, transparent, rgba(232,112,90,0.06), transparent);
+    }
+
+    #strength h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 6vw, 3.2rem);
+      line-height: 1.25;
+      color: var(--bark);
+      font-weight: 600;
+      max-width: 580px;
+    }
+
+    .quote-card {
+      background: #fff;
+      border-left: 3px solid var(--peach);
+      border-radius: 0 1rem 1rem 0;
+      padding: 1.4rem 1.8rem;
+      max-width: 580px;
+      text-align: left;
+    }
+
+    .quote-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      line-height: 1.7;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+    }
+
+    .quote-card cite {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .strength-body {
+      max-width: 540px;
+      font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    /* ── WISH SECTION ── */
+    #wish { gap: 2rem; text-align: center; }
+
+    #wish h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.9rem, 6vw, 3.2rem);
+      line-height: 1.25;
+      color: var(--bark);
+      font-weight: 600;
+    }
+
+    .wish-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      max-width: 620px;
+      width: 100%;
+    }
+
+    .wish-item {
+      background: linear-gradient(135deg, #fff, var(--cream));
+      border: 1.5px solid var(--sand);
+      border-radius: 1.2rem;
+      padding: 1.6rem 1.3rem;
+      text-align: center;
+    }
+
+    .wish-item .wi-icon { font-size: 2rem; margin-bottom: 0.6rem; display: block; }
+    .wish-item p { font-size: 0.9rem; line-height: 1.65; color: var(--muted); }
+
+    /* ── FINAL ── */
+    #final { text-align: center; gap: 2rem; }
+
+    .big-wish {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 8vw, 5rem);
+      line-height: 1.15;
+      font-style: italic;
+      color: var(--rose);
+      font-weight: 600;
+    }
+
+    .final-body {
+      max-width: 480px;
+      font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .signature-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1.5px solid var(--sand);
+      border-radius: 99px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .signature-badge span { font-size: 1.1rem; }
+
+    /* ── FLOATING CAT ── */
+    .flying-cat {
+      position: fixed;
+      font-size: 1.6rem;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sun-circle, .line, .reveal { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="petals-canvas"></canvas>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="sun-circle reveal">🌸</div>
+  <div class="reveal" style="display:flex;flex-direction:column;gap:0.8rem;align-items:center;">
+    <p class="tagline">Pour toi, rien que pour toi</p>
+    <h1>Joyeux<br/>anniversaire,<br/><em>Arisca</em></h1>
+  </div>
+  <p class="reveal" style="max-width:380px;text-align:center;font-size:clamp(1rem,2.5vw,1.1rem);line-height:1.8;color:var(--muted);">
+    Aujourd'hui, l'univers entier a mis ses plus beaux vêtements pour te fêter.
+  </p>
+  <div class="scroll-cue">
+    <span>Voyage</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- ── CHATS ── -->
+<section id="cats">
+  <div class="reveal" style="text-align:center;">
+    <p class="eyebrow">Chapitre I : Tu aimes les chats</p>
+    <h2>Tu aimes tellement les chats,<br/>et les chats le savent.</h2>
+  </div>
+  <div class="cat-grid reveal">
+    <div class="cat-card">
+      <span class="cat-icon">🐾</span>
+      <h3>Le ronronnement doux</h3>
+      <p>Je me souviens : tu m’avais dit un jour que tu pouvais te faire bouffer par un chat sans problème.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FORCE ── -->
+<section id="strength">
+  <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:1.8rem;width:100%;">
+    <p class="eyebrow">Chapitre II : Ce qui fait ta lumière</p>
+    <h2>Tu n'as jamais eu besoin<br/>de te justifier.</h2>
+    <div class="quote-card reveal">
+      <blockquote>
+        « Je dois justifier mon existence ? Ça me plaît pas, ça me monte vraiment. »
+      </blockquote>
+      <cite>Arisca, tu te souviens de cette conversation ?</cite>
+    </div>
+    <p class="strength-body reveal">
+      Il faut une vraie force intérieure pour nommer aussi clairement ce qui ne va pas; et refuser tranquillement que ça continue. Cette franchise, cette façon d'être entière, c'est un cadeau rare que tu portes.
+    </p>
+  </div>
+</section>
+
+<!-- ── VŒUX ── -->
+<section id="wish" class="py-12 px-4 max-w-6xl mx-auto">
+  <div class="reveal flex flex-col items-center gap-2 text-center mb-10">
+    <p class="eyebrow text-xs uppercase tracking-[0.2em] text-amber-500 font-semibold">Chapitre III : Ce que je te souhaite</p>
+    <h2 class="text-3xl md:text-4xl font-serif text-white font-light leading-tight">Des jours doux,<br/>à ta mesure.</h2>
+  </div>
+
+  <div class="wish-items reveal flex flex-wrap justify-center gap-6">
+    
+    <div class="wish-item w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-stone-900/50 p-6 rounded-2xl border border-stone-800/60 flex flex-col items-center text-center">
+      <span class="wi-icon text-3xl mb-3">🌿</span>
+      <p class="text-stone-300 text-sm leading-relaxed">Des matins calmes où personne ne demande rien; juste toi et le silence.</p>
+    </div>
+
+    <div class="wish-item w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-stone-900/50 p-6 rounded-2xl border border-stone-800/60 flex flex-col items-center text-center">
+      <span class="wi-icon text-3xl mb-3">🐱</span>
+      <p class="text-stone-300 text-sm leading-relaxed">Un chat qui vient s'endormir sur toi sans prévenir, au moment parfait.</p>
+    </div>
+
+    <div class="wish-item w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-stone-900/50 p-6 rounded-2xl border border-stone-800/60 flex flex-col items-center text-center">
+      <span class="wi-icon text-3xl mb-3">🌤️</span>
+      <p class="text-stone-300 text-sm leading-relaxed">Des gens qui te prennent telle que tu es; ni ajustée, ni expliquée.</p>
+    </div>
+
+    <div class="wish-item w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-stone-900/50 p-6 rounded-2xl border border-stone-800/60 flex flex-col items-center text-center">
+      <span class="wi-icon text-3xl mb-3">💛</span>
+      <p class="text-stone-300 text-sm leading-relaxed">Des nuits assez douces pour entendre ce que toi, tu veux vraiment.</p>
+    </div>
+
+    <div class="wish-item w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] max-w-sm bg-stone-900/50 p-6 rounded-2xl border border-stone-800/60 flex flex-col items-center text-center">
+      <span class="wi-icon text-3xl mb-3">✨</span>
+      <p class="text-stone-300 text-sm leading-relaxed">Et surtout, le meilleur qui puisse être dans ce monde.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FINAL ── -->
+<section id="final">
+  <p class="eyebrow reveal">Fin du voyage</p>
+  <p class="big-wish reveal">Que cette année<br/>soit la tienne,<br/>entièrement.</p>
+  <div class="divider reveal"><div class="divider-dot"></div></div>
+  <p class="final-body reveal">
+    Tu mérites un monde à ta mesure. Pas réduit, pas limité, pas expliqué. Juste <em>à ta mesure</em>, ma belle Arisca.
+  </p>
+  <div class="signature-badge reveal">
+    <span>🌸</span>
+    Avec toute mon affection, ton ami qui pense à toi
+    <span>🐾</span>
+  </div>
+</section>
+
+<script>
+/* ── PÉTALES CANVAS ── */
+const canvas = document.getElementById('petals-canvas');
+const ctx = canvas.getContext('2d');
+let W, H, petals = [];
+
+const SHAPES = ['🌸','🍂','✿','🌼'];
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+function initPetals(n = 28) {
+  petals = Array.from({ length: n }, () => ({
+    x: Math.random() * W,
+    y: Math.random() * H - H,
+    speed: 0.25 + Math.random() * 0.4,
+    drift: (Math.random() - 0.5) * 0.3,
+    size: 14 + Math.random() * 12,
+    rot: Math.random() * Math.PI * 2,
+    rotSpeed: (Math.random() - 0.5) * 0.012,
+    shape: SHAPES[Math.floor(Math.random() * SHAPES.length)],
+    opacity: 0.25 + Math.random() * 0.35,
+  }));
+}
+
+function animPetals() {
+  ctx.clearRect(0, 0, W, H);
+  petals.forEach(p => {
+    ctx.save();
+    ctx.globalAlpha = p.opacity;
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rot);
+    ctx.font = `${p.size}px serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(p.shape, 0, 0);
+    ctx.restore();
+    p.y += p.speed;
+    p.x += p.drift;
+    p.rot += p.rotSpeed;
+    if (p.y > H + 30) {
+      p.y = -30;
+      p.x = Math.random() * W;
+    }
+  });
+  requestAnimationFrame(animPetals);
+}
+
+resize();
+initPetals();
+animPetals();
+window.addEventListener('resize', () => { resize(); });
+
+/* ── REVEAL ── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.14 });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ── CHATS VOLANTS AU SCROLL ── */
+const cats = ['🐱','😺','🐾','🐈','🌸','🌼','✨'];
+let lastY = 0, cooldown = false;
+
+function spawnCat() {
+  if (cooldown) return;
+  cooldown = true;
+  setTimeout(() => cooldown = false, 600);
+
+  const el = document.createElement('span');
+  el.classList.add('flying-cat');
+  el.textContent = cats[Math.floor(Math.random() * cats.length)];
+  const sx = Math.random() * window.innerWidth;
+  const sy = Math.random() * window.innerHeight;
+  el.style.left = sx + 'px';
+  el.style.top = sy + 'px';
+  document.body.appendChild(el);
+
+  const angle = (Math.random() * 80 - 40) * (Math.PI / 180);
+  const dist = 130 + Math.random() * 100;
+  const dx = Math.sin(angle) * dist;
+  const dy = -(Math.cos(angle) * dist);
+  const dur = 850 + Math.random() * 350;
+
+  el.animate([
+    { transform: 'translate(0,0) scale(1)', opacity: 0.85 },
+    { transform: `translate(${dx}px,${dy}px) scale(0.5)`, opacity: 0 }
+  ], { duration: dur, easing: 'ease-out', fill: 'forwards' })
+    .onfinish = () => el.remove();
+}
+
+window.addEventListener('scroll', () => {
+  const now = window.scrollY;
+  if (Math.abs(now - lastY) > 40) { spawnCat(); lastY = now; }
+});
+
+/* ── BURST INITIAL ── */
+window.addEventListener('load', () => {
+  let i = 0;
+  const t = setInterval(() => { spawnCat(); if (++i >= 4) clearInterval(t); }, 250);
+});
+</script>
+</body>
+</html>
